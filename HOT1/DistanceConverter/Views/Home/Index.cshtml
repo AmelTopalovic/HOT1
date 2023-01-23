@@ -1,0 +1,29 @@
+﻿@model DistanceConverterModel 
+@{
+	ViewData["Title"] = "Distance Converter";
+	Layout = "_Layout";
+}
+
+<header class="">
+	<h1 class="mt-3 mb-4 text-success">Distance Converter</h1>
+</header>
+<form class="form-group" asp-action="Index" method="post">
+	<div class="row mb-4">
+		<div class="col-md-12">
+			<label class="col-md-2 col-form-label" asp-for="DistanceInInches">
+				Distance In Inches
+			</label>
+		</div>
+		<div class="col-md-1 mb-2">
+			<input class="form-control col-md-1" asp-for="DistanceInInches" />
+		</div>
+		<div class="col-md-12 mb-2">
+			<button class="btn btn-primary col-md-1" type="submit">Convert to cm</button>
+			<span class="text-danger" asp-validation-for="DistanceInInches"></span>
+		</div>
+		<output>
+			<label asp-for="DistanceInCentimeter">@ViewBag.distanceInCm</label>
+		</output>
+		
+	</div>
+</form>
