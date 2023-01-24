@@ -4,29 +4,33 @@
 	Layout = "_Layout";
 }
 
-<header>
+<header class="mb-3">
 	<h1 class="text-primary mt-3">
 		Crazy Crank's T-Shirt Factory
 	</h1>
-	<p>
+	<subtitle>
 		Order Form
-	</p>
+	</subtitle>
 </header>
 <div>
 	<form class="form-group" asp-action="Index" method="post">
 		<div class="row mb-4">
-			<div class="col-12"><label class="form-label col-2">Quantity</label></div>
-			<div class="col-2"><input class="form-control col-2" /></div>
+			<div class="col-12"><label class="form-label col-2" asp-for="Quantity">Quantity</label></div>
+			<div class="col-2"><input class="form-control col-2" asp-for="Quantity" value="@ViewBag.quantity"/></div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-12"><label class="form-label col-2">Discount Code</label></div>
-			<div class="col-2"><input class="form-control col-2" /></div>
+			<div class="row"><label class="form-label col-2" asp-for="DiscountCode">Discount Code</label></div>
+			<div class="row"><input class="form-control col-2 w-25 ms-2" asp-for="DiscountCode" value="@ViewBag.discountCode"/></div>
+			<div class="row"><label class="form-label col-2" asp-for="DiscountMessage">@ViewBag.discountMessage</label></div>
+			
 		</div>
 		<div>
 			<button class="btn btn-primary mb-4"type="submit">Order</button>
 		</div>
-		<div class="mb-3 row">
-			<div class="col-4"><textarea class="form-control border-1 border-dark" rows="3" readonly></textarea></div>
+		<div class="mb-3">
+			<div class="form-control w-25 border-1 border-dark" readonly>
+				<label class="form-label col-4 font-monospace fs-6" asp-for="Summary">@ViewBag.summary</label>
+			</div>
 			
 		</div>
 		
