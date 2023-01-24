@@ -3,21 +3,31 @@
 namespace DistanceConverter.Models
 {
 
-   
-    public class DistanceConverterModel  
+
+    public class DistanceConverterModel
     {
-        public const decimal CM_PER_IN = 2.54m;
+        public const double CM_PER_IN = 2.54;
 
         [Required(ErrorMessage = "You must enter inches to convert.")]
-        [Range(1, 500.00, ErrorMessage = "Value must be between 1 and 500." )]
-        public decimal? DistanceInInches { get; set; }
+        [Range(1, 500, ErrorMessage = "Value must be between 1 and 500.")]
+        public double? DistanceInInches { get; set; }
 
-        public decimal? DistanceInCentimeter { get; set; }
-
-        public string? CalcToCM()
+        public double? DistanceInCentimeters
         {
-            decimal? calculatedCM = DistanceInInches * CM_PER_IN;
-            return $"{DistanceInInches} inches is {calculatedCM} in centimeters";
+            get
+            {
+                return DistanceInInches * CM_PER_IN;
+
+            }
         }
-    }
+        
+        public string? ConvertedString {
+			get
+			{
+				return $"{DistanceInInches} inches is {DistanceInCentimeters:f2} centimeters.";
+			}
+            
+		}
+	}
+
 }
